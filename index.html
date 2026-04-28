@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Country Guessing Game</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <h1>Country Guessing Game</h1>
+      <p id="game-description">Guess 15 countries in as few turns as possible.</p>
+    </header>
+
+    <section class="mode-panel">
+      <div class="mode-label">Choose a game mode</div>
+      <div class="mode-options">
+        <label><input type="radio" name="game-mode" value="classic" checked /> Classic (15 countries)</label>
+        <label><input type="radio" name="game-mode" value="infinite" /> Infinite practice</label>
+        <label><input type="radio" name="game-mode" value="easy" /> Easy Duel</label>
+        <label><input type="radio" name="game-mode" value="medium" /> Medium Duel</label>
+        <label><input type="radio" name="game-mode" value="hard" /> Hard Duel</label>
+      </div>
+    </section>
+
+    <section id="country-picker" style="display:none;">
+      <h2>Pick Your Country</h2>
+      <select id="country-select"></select>
+      <button id="start-duel-btn">Start Duel</button>
+    </section>
+
+    <main id="main-game" style="display:block;">
+      <section class="status-panel">
+        <div class="status-card">
+          <span class="label">Current Country</span>
+          <div id="country-mask" class="country-mask">Loading...</div>
+        </div>
+        <div class="status-card">
+          <span class="label">Turn Count</span>
+          <div id="turn-count">0</div>
+        </div>
+        <div class="status-card">
+          <span class="label">Countries Guessed</span>
+          <div id="guessed-count">0 / 15</div>
+        </div>
+      </section>
+
+      <section class="hint-panel">
+        <h2>Hint</h2>
+        <p id="hint-text">A hint will appear here.</p>
+      </section>
+
+      <section class="guess-panel">
+        <div class="input-group">
+          <label for="letter-input">Guess a letter</label>
+          <input id="letter-input" maxlength="1" placeholder="A" />
+          <button id="guess-letter-btn">Guess Letter</button>
+        </div>
+        <div class="input-group">
+          <label for="country-input">Guess the full country</label>
+          <input id="country-input" placeholder="Type country name" />
+          <button id="guess-country-btn">Guess Country</button>
+        </div>
+      </section>
+
+      <section class="log-panel">
+        <h2>Game Log</h2>
+        <div id="game-log" class="game-log"></div>
+      </section>
+    </main>
+
+    <section class="duel-panel" id="duel-panel" style="display:none;">
+      <div class="duel-container">
+        <div class="duel-side">
+          <h2>Your Guess (Computer's Country)</h2>
+          <div class="status-card">
+            <span class="label">Country</span>
+            <div id="computer-mask" class="country-mask">Loading...</div>
+          </div>
+          <div class="hint-panel">
+            <h3>Hint</h3>
+            <p id="computer-hint-text">Hint will appear here.</p>
+          </div>
+          <div class="guess-panel">
+            <div class="input-group">
+              <label for="duel-letter-input">Guess a letter</label>
+              <input id="duel-letter-input" maxlength="1" placeholder="A" />
+              <button id="duel-guess-letter-btn">Guess Letter</button>
+            </div>
+            <div class="input-group">
+              <label for="duel-country-input">Guess the full country</label>
+              <input id="duel-country-input" placeholder="Type country name" />
+              <button id="duel-guess-country-btn">Guess Country</button>
+            </div>
+          </div>
+        </div>
+        <div class="duel-side">
+          <h2>Computer's Guess (Your Country)</h2>
+          <div class="status-card">
+            <span class="label">Country</span>
+            <div id="human-mask" class="country-mask">Loading...</div>
+          </div>
+          <div class="hint-panel">
+            <h3>Hint</h3>
+            <p id="human-hint-text">Hint will appear here.</p>
+          </div>
+          <div id="computer-thinking">Computer is thinking...</div>
+        </div>
+      </div>
+      <section class="log-panel">
+        <h2>Game Log</h2>
+        <div id="game-log-duel" class="game-log"></div>
+      </section>
+    </section>
+
+    <footer>
+      <button id="new-game-btn">Restart Game</button>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
